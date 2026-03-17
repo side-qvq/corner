@@ -1,0 +1,11 @@
+终端
+1. 安装指令（国内镜像版） 
+/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
+2. 写入配置文件指令
+echo 'eval "$(/opt/homebrew/bin/brew shellenv zsh)"' >> /Users/hongchen/.zprofile
+3. 立即激活指令
+eval "$(/opt/homebrew/bin/brew shellenv zsh)"
+4.安装python
+brew install python
+5.查询python是否安装成功
+python3 --version
