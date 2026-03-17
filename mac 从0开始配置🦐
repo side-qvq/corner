@@ -1,0 +1,49 @@
+第一步：环境准备（在主力账号操作）
+安装 Homebrew：/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+安装 Node.js 和 Git：brew install node git
+
+第二步：创建受控环境
+系统设置 > 用户与群组，添加一个名为 OpenClawAdmin 的标准用户
+
+第三步：正式安装 OpenClaw
+在专用账号的终端中执行：curl -fsSL https://openclaw.ai/install.sh | bash
+手动引导：openclaw onboard --install-daemon
+【选择模式：选择 Local Mode。
+配置 LLM：建议绑定你常用的 Claude 或 DeepSeek API Key（作为管理学研究生，你应该已经有这些配置了）。
+安装守护进程：选择 Yes，这会让 OpenClaw 以后台服务形式常驻。】
+
+一些配置：
+1. 核心模块选择 (Select sections)
+[x] Workspace: 基础文件路径。
+
+[x] Model: 配置 DeepSeek 的模型身份。
+
+[x] Gateway: 核心网关配置（最重要）。
+
+[x] Health check: 自动检测服务状态。
+
+2. 逐项配置指南
+A. Workspace (工作区)
+Workspace directory: 直接按回车（默认 ~/.openclaw/workspace）。
+
+Sessions directory: 直接按回车（默认存储对话记录）。
+
+B. Model (模型)
+Default model: 选择 custom-api-deepseek-com/deepseek-chat。
+
+Fallback model: 留空或选择 None（确保实验变量单一）。
+
+C. Gateway (网关) —— 这是避坑核心
+这是解决 1008 报错和端口冲突的关键环节：
+
+Gateway port: 手动输入 18788。
+
+Gateway bind mode: 选择 Loopback (Local only)。
+
+理由：保护你的 API Key 不被局域网其他人偷用。
+
+Gateway auth: 选择 Token。
+
+Tailscale exposure: 选择 Off (No Tailscale exposure)。
+
+理由：避免虚拟网卡和代理干扰，确保 127.0.0.1 访问顺畅。
