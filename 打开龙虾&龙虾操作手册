@@ -1,1 +1,8 @@
-第一步：打开终端（Terminal）：openclaw gateway run --port 18788
+打开终端（Terminal）
+运行：openclaw gateway run -:-port 18788
+
+我的龙虾文件路径  open -e ~/.openclaw/openclaw.json
+
+自动识别无效字段并尝试将其格式化或剔除  openclaw doctor --fix
+
+官网服务器超载，skills装不上，尝从试腾讯skills集成平台下载：https://skillhub.tencent.com/
